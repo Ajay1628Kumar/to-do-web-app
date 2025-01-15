@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Geist";
+  src: url("./assets/fonts/Geist-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "PlayFair";
+  src: url("./assets//fonts/PlayfairDisplay-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Sen";
+  src: url("./assets/fonts/Sen-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "OutFit";
+  src: url("./assets/fonts/Outfit-VariableFont_wght.ttf");
+}
