@@ -59,7 +59,7 @@ function App() {
 
           {/* Sign In Route */}
           <Route
-            path="/src/pages/LogIn"
+            path="/LogIn"
             element={<LogIn addUserData={addUserData} />}
           />
         </Routes>

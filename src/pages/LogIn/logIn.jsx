@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = ({ addUserData }) => {
   // initial user data value
@@ -11,18 +11,23 @@ const LogIn = ({ addUserData }) => {
   // user data state
   let [userData, setUserData] = useState(initialData);
 
+  // Create navigate function
+  const navigate = useNavigate();
+
   // function for handling input fields and storing them
   function handleChange(e) {
     setUserData({
+      ...userData, // Spread the previous state to preserve other data
       [e.target.name]: e.target.value,
     });
   }
 
-  // function for submiting the form
+  // function for submitting the form
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUserData(userData);
-    setUserData(initialData);
+    addUserData(userData); // Add the user data
+    setUserData(initialData); // Reset the user data
+    navigate("/"); // Navigate to the homepage
   };
 
   return (
@@ -32,11 +37,13 @@ const LogIn = ({ addUserData }) => {
           Login
         </h2>
 
-        <form>
+        <form onSubmit={handleSubmit}>
+          {" "}
+          {/* Use onSubmit instead of onClick */}
           {/* Email Input */}
           <div className="mb-4">
             <label
-              htmlFor="email"
+              htmlFor="userName"
               className="block text-sm font-medium text-gray-700"
             >
               User Name
@@ -52,7 +59,6 @@ const LogIn = ({ addUserData }) => {
               value={userData.userName}
             />
           </div>
-
           {/* Password Input */}
           <div className="mb-6">
             <label
@@ -69,6 +75,7 @@ const LogIn = ({ addUserData }) => {
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none  focus:ring-1 focus:ring-red-300"
               placeholder="Enter your password"
               value={userData.password}
+              onChange={handleChange}
             />
 
             <div className="mt-4">
@@ -85,14 +92,12 @@ const LogIn = ({ addUserData }) => {
               </label>
             </div>
           </div>
-
           {/* Submit Button */}
-
           <button
+            type="submit" // Use type="submit" to trigger form submission
             className="w-full text-white py-2 px-4 bg-red-500 rounded-md hover:bg-red-700"
-            onClick={handleSubmit} 
           >
-            <Link to={"/"}>Log In</Link>
+            Log In
           </button>
         </form>
       </div>
