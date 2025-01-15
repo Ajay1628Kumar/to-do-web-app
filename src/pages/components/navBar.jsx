@@ -16,11 +16,7 @@ const NavBar = ({ userD }) => {
               <li>{userD.userName}</li>
             )}
             <Link to={"/"} className="flex gap-3 items-center">
-              <img
-                src="/src/assets/images/KK-01.png"
-                alt="logo"
-                className=" w-8"
-              />{" "}
+              <img src="/src/images/KK-01.png" alt="logo" className=" w-8" />{" "}
               DoIt
             </Link>
           </ul>
