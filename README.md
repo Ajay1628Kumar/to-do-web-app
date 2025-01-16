@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Ajay Kumar</h1>
 <h3 align="center">A passionate frontend developer from India</h3>
 
-- 🔭 This is my project named created using Vite , ReactJs, TailwindCss of a **To-Do-Web-App**
+- 🔭 This project is created using Vite , ReactJs, TailwindCss of a **To-Do-Web-App**
 
 - 🌱 I’m currently learning **Backend Development(NodeJs,ExpressJs,MongoDB)**
 
