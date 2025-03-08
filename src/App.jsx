@@ -15,53 +15,54 @@ function App() {
       ...data,
       {
         ...newData,
-        id: data.length + 1,
+        id: data.length+1, // Ensure unique ID
       },
     ]);
   }
 
-  // Move to-do item to the completed list
-  function markAsCompleted(toDoName) {
-    // Add the completed to-do to completedData
-    setCompletedData((prev) => [...prev, toDoName]);
+  // Delete to-do
+  function deleteData(id) {
+    setData(data.filter((item) => item.id !== id));
+  }
 
-    // Remove the completed to-do from active data
-    setData(data.filter((db) => db.toDoName !== toDoName));
+  // Move to-do item to the completed list
+  function markAsCompleted(id) {
+    const completedItem = data.find((item) => item.id === id);
+    if (!completedItem) return;
+
+    setCompletedData((prev) => [...prev, completedItem]); // Add to completed list
+    setData(data.filter((item) => item.id !== id)); // Remove from active list
   }
 
   function addUserData(userData) {
     setUserD({
       ...userData,
-      id: userD.length + 1,
+      id: Date.now(), // Ensure unique ID
     });
   }
 
   return (
     <>
-      <div className="/* bg-[#FBFDFC] */">
+      <div>
         {/* Navbar */}
         <Navbar userD={userD} />
 
-        {/* creating routes */}
+        {/* Routes */}
         <Routes>
-          {/* Home Route */}
           <Route
             path="/"
             element={
               <Home
                 addData={addData}
                 data={data}
-                markAsCompleted={markAsCompleted} // Pass markAsCompleted to Home
+                markAsCompleted={markAsCompleted}
                 completedData={completedData}
+                deleteData={deleteData}
               />
             }
           />
 
-          {/* Sign In Route */}
-          <Route
-            path="/LogIn"
-            element={<LogIn addUserData={addUserData} />}
-          />
+          <Route path="/LogIn" element={<LogIn addUserData={addUserData} />} />
         </Routes>
       </div>
     </>

@@ -8,7 +8,7 @@ const Home = ({
   data,
   markAsCompleted,
   completedData,
-  completedDataId,
+  deleteData,
 }) => {
   return (
     <div>
@@ -16,11 +16,14 @@ const Home = ({
       <AddToDoComp addData={addData} />
 
       {/* Display ToDo Component */}
-      {data.map((data) => {
-        return (
-          <DisplayToDo data={data} key={data.id} onComplete={markAsCompleted} />
-        );
-      })}
+      {data.map((todo) => (
+        <DisplayToDo
+          key={todo.id}
+          data={todo}
+          onComplete={markAsCompleted}
+          deleteData={deleteData}
+        />
+      ))}
 
       {/* Completed To Do Component */}
       <CompletedToDo completedData={completedData} />

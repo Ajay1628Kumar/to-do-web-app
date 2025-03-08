@@ -7,20 +7,16 @@ const CompletedToDo = ({ completedData }) => {
         <h2 className="text-xl">Completed Tasks</h2>
         <ul>
           {completedData.map((todo, index) => (
-            <>
-              <div
-                className="flex justify-between text-gray-500 mt-3 font-[Outfit] text-lg font-normal"
-              >
-                <div className="flex gap-4">
-                <i class="ri-checkbox-fill"></i>
-                  <li key={index} className="line-through">
-                    {todo}
-                  </li>
-                </div>
-                <i className="ri-star-fill line-none"></i>
+            <div
+              key={index}
+              className="flex justify-between text-gray-500 mt-3 font-[Outfit] text-lg font-normal"
+            >
+              <div className="flex gap-4">
+                <i className="ri-checkbox-fill"></i>
+                <li className="line-through list-none">{todo.toDoName}</li>
               </div>
-              <hr className="border-[#35793729]" />
-            </>
+              <i className="ri-star-fill"></i>
+            </div>
           ))}
         </ul>
       </div>
